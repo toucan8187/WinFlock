@@ -1,0 +1,10 @@
+# Custom FLOCK Implementation in C
+
+This project implements a file-locking mechanism in C using a custom `flock()` system based on file descriptors.
+
+✅ Supports LOCK_SH / LOCK_EX / LOCK_UN / LOCK_NB  
+✅ Text-based lock storage in C:\flock  
+✅ Process list stored per fd with shared/exclusive ownership  
+✅ Safe release via flock_clear(pid) on process exit  
+
+This is a low-level, memory-efficient implementation designed for educational and real-world locking simulations.
