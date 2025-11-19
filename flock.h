@@ -191,20 +191,11 @@ int flock_write(int fd, struct FLOCK *_flock) {
     return 0;
 }
 
-void _printbit(unsigned char bit) {
-    for (int i = 0; i < 8; i++) {
-        printf("%d", (bit >> (7 - i)) & 0b00000001);
-    }
-    putc('\n', stdout);
-}
-
 int flock_close(int fd) {
-    char buf[30];
-    int bufSize = 0;
     char temp[TEMPSIZE];
     int tempSize = 0;
-    sprintf(buf, "%d", fd);
-    char *_path = repath(_FLOCK_PATH, buf);
+    sprintf(temp, "%d", fd);
+    char *_path = repath(_FLOCK_PATH, temp);
     int fd_flock;
     unsigned char _mkdir = 0;
     if ((fd_flock = open(_path, O_RDWR | O_CREAT | O_BINARY, 0644)) == -1) {
@@ -255,12 +246,10 @@ int flock_close(int fd) {
 }
 
 int flock(int fd, unsigned char flag) {
-    char buf[30];
-    int bufSize = 0;
     char temp[TEMPSIZE];
     int tempSize = 0;
-    sprintf(buf, "%d", fd);
-    char *_path = repath(_FLOCK_PATH, buf);
+    sprintf(temp, "%d", fd);
+    char *_path = repath(_FLOCK_PATH, temp);
     int fd_flock;
     unsigned char _mkdir = 0;
     while ((fd_flock = open(_path, O_RDWR | O_CREAT | O_BINARY, 0644)) == -1) {
